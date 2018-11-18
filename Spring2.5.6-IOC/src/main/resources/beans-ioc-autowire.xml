@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd" >
+
+  <bean id="girl1" class="com.cn.demo.ioc.xml.autowire.Girl">
+  	<property name="girlId" value="1" />
+  </bean>
+  
+  <bean id="girl" class="com.cn.demo.ioc.xml.autowire.Girl">
+  	<property name="girlId" value="1" />
+  </bean>
+  
+  <bean id="family" class="com.cn.demo.ioc.xml.autowire.Family" autowire="byName">
+  </bean>
+  
+</beans>

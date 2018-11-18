@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<context:annotation-config/>
+	<context:component-scan base-package="com.cn.demo.aop.annotation"/>
+	<!--
+	 通过上面的扫描，使用aspectsj注解的方式，在容器启动的时候自动产生一个代理
+	它内部实现是有aspectsj来实现的，aspectsj是专门用来产生动态代理的，Spring使用了它
+	 -->
+	<aop:aspectj-autoproxy/>
+</beans>

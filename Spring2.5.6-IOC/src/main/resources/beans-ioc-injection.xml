@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 属性注入实例化UserService并注入 userDAO-->	
+	<bean id="u" class="com.cn.demo.ioc.xml.system.dao.impl.UserDAOImpl">
+	</bean>
+	
+	<bean id="userService" class="com.cn.demo.ioc.xml.system.service.UserService" scope="prototype" autowire="byName" >
+	</bean>
+	
+	<!-- 构造器注入，另外要说明的是bean标签中的id或者name没啥区别，都可以用  -->
+	<bean name="groupDAO" class="com.cn.demo.ioc.xml.system.dao.impl.GroupDAOImpl">
+	</bean>
+	<bean name="groupService" class="com.cn.demo.ioc.xml.system.service.impl.GroupServiceImpl">
+		<constructor-arg>
+			<ref bean="groupDAO"/>
+		</constructor-arg>
+	</bean>
+
+
+	<!-- <import resource="beans-collections.xml"/> -->
+</beans>

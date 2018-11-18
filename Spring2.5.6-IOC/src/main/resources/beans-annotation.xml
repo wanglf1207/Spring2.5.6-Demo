@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<!-- 想使用注解beans里需要加内容 -->
+	<context:annotation-config/>
+  
+	<!-- 使用@Component写下面的代码 -->
+	<context:component-scan base-package="com"/>
+	
+	<!-- 
+	配置提示
+	E:\coyote\Spring\spring-framework-2.5.6\dist\resources\spring-context-2.5.xsd
+ 	-->
+</beans>
