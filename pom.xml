@@ -96,6 +96,6 @@
   	<module>Spring2.5.6-IOC</module>
   	<module>Spring2.5.6-AOP</module>
 	<module>Spring2.5.6-Simulation</module>
-    <module>Spring2.5.6-Datasource</module>
+    <module>Spring2.5.6-DataSource</module>
     </modules>
 </project>
