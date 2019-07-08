@@ -4,6 +4,6 @@ import com.demo.ioc.xml.simulations.domain.User;
 
 public interface UserDAO {
 	
-	public void save(User user);
+	void save(User user);
 	
 }
