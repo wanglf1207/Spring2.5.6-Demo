@@ -9,6 +9,8 @@ public class FamilyTest {
 	@Test
 	public void test() {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans-ioc-autowire.xml");
+		// 执行 applicationContext.getBean("family")的时候隐形调用applicationContext).start()
+		((ClassPathXmlApplicationContext) applicationContext).start();
 		Family family = (Family) applicationContext.getBean("family");
 		System.out.println(family.getGirl().getGirlId());
 	}
