@@ -3,6 +3,8 @@ package com.demo.ioc.xml.simulations.spring;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -21,11 +23,14 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
 	private Object object = null;
 	private Element element = null;
 	
-	private Map<String , Object> beans = new HashMap<String, Object>();
-	 
+	private Map<String , Object> beans = new HashMap<>();
+
+	private static final Logger logger = LoggerFactory.getLogger(ClassPathXmlApplicationContext.class);
+
 	public ClassPathXmlApplicationContext() throws Exception {
-		
-		System.out.println("this.getClass()" + this.getClass() + "this: " + this.toString());
+
+		logger.info("this.getClass()" + this.getClass() + "this: " + this.toString());
+
 		SAXBuilder saxBuilder = new SAXBuilder();
 	    Document doc = saxBuilder.build(this.getClass().getClassLoader().getResourceAsStream("beans-ioc-simulations.xml"));
 	    Element rootElement = doc.getRootElement(); 
