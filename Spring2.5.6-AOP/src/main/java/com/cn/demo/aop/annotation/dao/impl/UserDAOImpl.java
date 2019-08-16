@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 import com.cn.demo.aop.annotation.dao.UserDAO;
 import com.cn.demo.aop.annotation.model.User;
 
-@Component("u") 
+@Component("u")
 public class UserDAOImpl implements UserDAO {
 
 	public void save(User user) {
 		System.out.println("user saved!");
-		// “Ï≥£“ª∞„”√struts2¿¥¥¶¿Ì
+		// ÂºÇÂ∏∏‰∏ÄËà¨Áî®struts2Êù•Â§ÑÁêÜ
 		//throw new RuntimeException("exception!");
 	}
 

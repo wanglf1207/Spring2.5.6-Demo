@@ -4,9 +4,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class LogInterceptor implements InvocationHandler {
-	// 声明被代理的对象
+
+	// 澹版槑琚唬鐞嗙殑瀵硅薄
 	private Object target;
-	
+
 	public Object getTarget() {
 		return target;
 	}
@@ -21,7 +22,7 @@ public class LogInterceptor implements InvocationHandler {
 
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		// 在调用任何方法之前都调用beforeMethod
+		// 鍦ㄨ皟鐢ㄤ换浣曟柟娉曚箣鍓嶉兘璋冪敤beforeMethod
 		beforeMethod(method);
 		method.invoke(target, args);
 		return null;

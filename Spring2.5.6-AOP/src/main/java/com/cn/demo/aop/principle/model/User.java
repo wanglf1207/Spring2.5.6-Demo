@@ -1,7 +1,5 @@
 package com.cn.demo.aop.principle.model;
 
-//POJO User.java
-//代表User用户的实体类
 public class User {
 
 	private String username;

@@ -13,7 +13,7 @@ import com.cn.demo.aop.principle.spring.BeanFactory;
 import com.cn.demo.aop.principle.spring.ClassPathXmlApplicationContext;
 
 public class UserServiceTest {
-	
+
 	@Test
 	public void testAdd() throws Exception {
 		BeanFactory applicationContext = new ClassPathXmlApplicationContext();
@@ -23,38 +23,38 @@ public class UserServiceTest {
 		u.setPassword("zhangsan");
 		service.add(u);
 	}
-	
+
 	@Test
 	public void testProxy() throws Exception {
 		UserDAO userDAO = new UserDAOImpl();
-		// °ÑUserDAO½»¸ø±»´úÀíµÄ¶ÔÏó
+		// æŠŠUserDAOäº¤ç»™è¢«ä»£ç†çš„å¯¹è±¡
 		LogInterceptor li = new LogInterceptor();
 		li.setTarget(userDAO);
 		/*
-		 * ¸ù¾İ±»´úÀí¶ÔÏó²úÉúÒ»¸ö´úÀí
-		 * ²ÎÊıËµÃ÷£ºloader£ºÓÃÄÄ¸öclassloader²úÉú´úÀí¶ÔÏó£¬ÒªºÍ±»´úÀí¶ÔÏóÓÃÍ¬Ò»¸öclassLoder
-		 * interfaces:²úÉúµÄ±»´úÀí¶ÔÏóÒªÊµÏÖÄÄĞ©½Ó¿Ú
-		 * h:ÓÃÄÄ¸öhandler½øĞĞ´¦Àí
-		 * ×¢Òâ£º½Ó¿ÚinterfacesÀïÓĞÄÄĞ©·½·¨£¬Éú³É´úÀíÀï¾ÍÓĞÄÄĞ©·½·¨
-		 * ´úÀíÖĞµÄ·½·¨Ã¿Ò»´Î±»µ÷ÓÃµÄÊ±ºò¶¼»á´«¸øInvocationHandler
-		 * Ò²¾ÍÊÇ´«¸øpublic Object invoke(Object proxy, Method method, Object[] args)
-		 * ÒÔÏÂÖ¸¶¨interfacesµÄÁ½ÖÖ·½Ê½¶¼ĞĞ
+		 * æ ¹æ®è¢«ä»£ç†å¯¹è±¡äº§ç”Ÿä¸€ä¸ªä»£ç†
+		 * å‚æ•°è¯´æ˜ï¼šloaderï¼šç”¨å“ªä¸ªclassloaderäº§ç”Ÿä»£ç†å¯¹è±¡ï¼Œè¦å’Œè¢«ä»£ç†å¯¹è±¡ç”¨åŒä¸€ä¸ªclassLoder
+		 * interfaces:äº§ç”Ÿçš„è¢«ä»£ç†å¯¹è±¡è¦å®ç°å“ªäº›æ¥å£
+		 * h:ç”¨å“ªä¸ªhandlerè¿›è¡Œå¤„ç†
+		 * æ³¨æ„ï¼šæ¥å£interfacesé‡Œæœ‰å“ªäº›æ–¹æ³•ï¼Œç”Ÿæˆä»£ç†é‡Œå°±æœ‰å“ªäº›æ–¹æ³•
+		 * ä»£ç†ä¸­çš„æ–¹æ³•æ¯ä¸€æ¬¡è¢«è°ƒç”¨çš„æ—¶å€™éƒ½ä¼šä¼ ç»™InvocationHandler
+		 * ä¹Ÿå°±æ˜¯ä¼ ç»™public Object invoke(Object proxy, Method method, Object[] args)
+		 * ä»¥ä¸‹æŒ‡å®šinterfacesçš„ä¸¤ç§æ–¹å¼éƒ½è¡Œ
 		 */
 		ClassLoader loader = userDAO.getClass().getClassLoader();
 		//Class[] interfaces = new Class[]{UserDAO.class};
 		@SuppressWarnings("rawtypes")
 		Class[] interfaces = userDAO.getClass().getInterfaces();
 		UserDAO userDAOProxy = (UserDAO) Proxy.newProxyInstance(loader, interfaces, li);
-		// ´òÓ¡´úÀíµÄÃû×Ö
+		// æ‰“å°ä»£ç†çš„åå­—
 		//System.out.println(userDAOProxy.getClass().getName());
 		userDAOProxy.save(new User());
 		userDAOProxy.delete();
-		
-		//¿ÉÒÔÏëÏóµÄµ½²úÉúµÄ´úÀíÎª
-		/*class $Proxy4 implements UserDAO 
+
+		//å¯ä»¥æƒ³è±¡çš„åˆ°äº§ç”Ÿçš„ä»£ç†ä¸º
+		/*class $Proxy4 implements UserDAO
 		 * {
 		 * 	save(User u) {
-		 * 	Method m = UserDAO.getclass.getmethod 
+		 * 	Method m = UserDAO.getclass.getmethod
 		 * li.invoke(this, m, u)
 		 * }
 		 * }

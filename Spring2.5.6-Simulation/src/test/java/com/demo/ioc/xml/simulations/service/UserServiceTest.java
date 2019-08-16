@@ -13,7 +13,7 @@ public class UserServiceTest {
 		UserService service = (UserService)applicationContext.getBean("userService");
 		User u = new User();
 		u.setUsername("admin");
-		u.setPassword("admin");
+		u.setPassword("password");
 		service.add(u);
 	}
 }

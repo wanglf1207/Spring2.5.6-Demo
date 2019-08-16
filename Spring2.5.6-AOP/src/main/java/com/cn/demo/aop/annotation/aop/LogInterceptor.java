@@ -4,28 +4,28 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-//aspectÊÇÇĞÃæµÄÒâË¼£¬@AspectĞŞÊÎµÄÀàËµÃ÷¿ÉÒÔÇĞµ½±ğµÄÀàÉÏ
-//×¢ÒâÕâÀïÀà±¾ÉíÒ²ÒªÊ¹ÓÃ@Component³õÊ¼»¯
+//aspectæ˜¯åˆ‡é¢çš„æ„æ€ï¼Œ@Aspectä¿®é¥°çš„ç±»è¯´æ˜å¯ä»¥åˆ‡åˆ°åˆ«çš„ç±»ä¸Š
+//æ³¨æ„è¿™é‡Œç±»æœ¬èº«ä¹Ÿè¦ä½¿ç”¨@Componentåˆå§‹åŒ–
 @Aspect
 @Component
 public class LogInterceptor {
-    //beforeµÄÒâË¼ÊÇËµÔÚ·½·¨Ö´ĞĞÖ®Ç°ÏÈÖ´ĞĞÎÒÕâ¸ö
-    //ÒªÏë°ÑÕâ¸öÒµÎñÂß¼­Ö¯µ½Ä³¸öÀàµÄÄ³¸ö·½·¨ÉÏ
-    //ÄÇ¸öÀà±ØĞëÊÇSpring¹ÜÀíÆğÀ´µÄ
-    //beforeÓĞ×Ô¼ºµÄÓï·¨£¬³ÆÎªÖ¯ÈëµãÓï·¨
-    //¿´ÏÂÃæºÜÉñÆæµÄÖ¯Èë½øÈ¥ÁË£¬¸üÈ·ÇĞµÄËµÊÇÇĞ½øÈ¥
+    //beforeçš„æ„æ€æ˜¯è¯´åœ¨æ–¹æ³•æ‰§è¡Œä¹‹å‰å…ˆæ‰§è¡Œæˆ‘è¿™ä¸ª
+    //è¦æƒ³æŠŠè¿™ä¸ªä¸šåŠ¡é€»è¾‘ç»‡åˆ°æŸä¸ªç±»çš„æŸä¸ªæ–¹æ³•ä¸Š
+    //é‚£ä¸ªç±»å¿…é¡»æ˜¯Springç®¡ç†èµ·æ¥çš„
+    //beforeæœ‰è‡ªå·±çš„è¯­æ³•ï¼Œç§°ä¸ºç»‡å…¥ç‚¹è¯­æ³•
+    //çœ‹ä¸‹é¢å¾ˆç¥å¥‡çš„ç»‡å…¥è¿›å»äº†ï¼Œæ›´ç¡®åˆ‡çš„è¯´æ˜¯åˆ‡è¿›å»
 
 
     @Before("execution(public * com.cn.demo.aop.annotation.dao.impl.UserDAOImpl.save(com.cn.demo.aop.annotation.model.User))")
     public void before() {
         System.out.println("method start...");
     }
-    //2£º»¹¿ÉÒÔÕâÑù
+    //2ï¼šè¿˜å¯ä»¥è¿™æ ·
 	/*@Before("execution(public * com.dao..*.*(..))")
 	public void before() {
 		System.out.println("method start...");
 	}*/
-    //3: afterreturning ±íÊ¾·½·¨Õı³£Ö´ĞĞ·µ»Ø
+    //3: afterreturning è¡¨ç¤ºæ–¹æ³•æ­£å¸¸æ‰§è¡Œè¿”å›
 	/*@Before("execution(public * com.dao..*.*(..))")
 	public void before() {
 		System.out.println("method start...");
@@ -36,8 +36,8 @@ public class LogInterceptor {
 		System.out.println("method end...");
 	}*/
 
-    //4:±È½Ï¹ÖÒìµÄÓï·¨£¬PoingcutÏàµ±ÓÚÒ»¸öÇĞÈëµãµÄ¼¯ºÏ£¬myMethodÏàµ±ÓÚ¸øÕâ¸ö
-    //¼¯ºÏÆğÁË¸öÃû×Ö£¬Ã»Ê²Ã´µÀÀí¿É½²
+    //4:æ¯”è¾ƒæ€ªå¼‚çš„è¯­æ³•ï¼ŒPoingcutç›¸å½“äºä¸€ä¸ªåˆ‡å…¥ç‚¹çš„é›†åˆï¼ŒmyMethodç›¸å½“äºç»™è¿™ä¸ª
+    //é›†åˆèµ·äº†ä¸ªåå­—ï¼Œæ²¡ä»€ä¹ˆé“ç†å¯è®²
 	/*@Pointcut("execution(public * com.dao..*.*(..))")
 	public void myMethod() {}
 
@@ -51,7 +51,7 @@ public class LogInterceptor {
 		System.out.println("method  afterreturning...");
 	}*/
 
-    //5: ²âÊÔ@AfterThrowing
+    //5: æµ‹è¯•@AfterThrowing
 	/*@Pointcut("execution(public * com.dao..*.*(..))")
 	public void myMethod() {}
 
@@ -79,9 +79,9 @@ public class LogInterceptor {
 		pjp.proceed();
 		System.out.println("method around end...");
 	}*/
-    //7:°ÑÒµÎñÂß¼­Ö¯µ½ÒµÎñ²ã
-    //×¢ÒâUserServiceÃ»ÓĞÊµÏÖ½Ó¿Ú£¬Èç¹ûÀàÊµÏÖÁË½Ó¿Ú£¬ÏµÍ³»áÊ¹ÓÃJDK×Ô´øµÄinvocationhandler
-    //²úÉú´úÀí£¬·ñÔòËùÒÔÒªÓÃ¶ş½øÖÆµÄĞÎÊ½²ÅÄÜ²úÉú´úÀí£¬ËùÒÔÕâÀïĞèÒªÒı°ü
+    //7:æŠŠä¸šåŠ¡é€»è¾‘ç»‡åˆ°ä¸šåŠ¡å±‚
+    //æ³¨æ„UserServiceæ²¡æœ‰å®ç°æ¥å£ï¼Œå¦‚æœç±»å®ç°äº†æ¥å£ï¼Œç³»ç»Ÿä¼šä½¿ç”¨JDKè‡ªå¸¦çš„invocationhandler
+    //äº§ç”Ÿä»£ç†ï¼Œå¦åˆ™æ‰€ä»¥è¦ç”¨äºŒè¿›åˆ¶çš„å½¢å¼æ‰èƒ½äº§ç”Ÿä»£ç†ï¼Œæ‰€ä»¥è¿™é‡Œéœ€è¦å¼•åŒ…
 	/*@Pointcut("execution(public * com.service..*.add(..))")
 	public void myMethod() {}*/
 
